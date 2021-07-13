@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Swagger RestFul API
+schemes: [http]
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /books:
+    get:
+      operationId: get_books
+      tags:
+        - books
+      summary: All books
+      responses:
+        200:
+          description: Success
+  /books/id/{book_id}:
+    get:
+      operationId: get_books_by_id
+      tags:
+        - book id
+      summary: Book by id
+      parameters:
+        - name: book_id
+          in: path
+          description: Id of the book
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successfully get the book by id
+        503:
+          description: Incorrect id
+  /books/date/{published_date}:
+    get:
+      operationId: get_books_by_date
+      tags:
+        - published date
+      summary: Books by published date
+      parameters:
+        - name: published_date
+          in: path
+          description: Published date of the book
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully get books by published date
+  /books/date/sort_by_latest:
+    get:
+      operationId: sort_books_by_newest
+      tags:
+        - Books sorts by latest published date
+      summary: Books sorts by latest published date
+      responses:
+        200:
+          description: Successfully sort books by latest published date
+  /books/date/sort_by_eldest:
+    get:
+      operationId: sort_books_by_eldest
+      tags:
+        - Books sorts by eldest publised date
+      summary: Books sorts by eldest published date
+      responses:
+        200:
+          description: Successfully sort books by eldest published date
+  /books/author/{author_name}:
+    get:
+      operationId: get_books_by_author
+      tags:
+        - author
+      summary: Books by the author
+      parameters:
+        - name: author_name
+          in: path
+          description: Author of books
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successfully get books by the author
+        503:
+          description: Incorrect author
+
+
+
